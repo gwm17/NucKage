@@ -1,0 +1,128 @@
+begin_simulator
+	/data1/gwm17/10B3He/sim_test/test_config_targ.root
+	1000000
+	begin_reactorchain
+		begin_reactor
+			16.645
+			0.015
+			24.0
+			0.001
+			begin_nuclei
+				5 10
+				2 3
+				2 4
+			end_nuclei
+		end_reactor
+		begin_reactor
+			0.0
+			0.0
+			0.0
+			0.004
+			begin_nuclei
+				5 9
+				1 1
+			end_nuclei
+		end_reactor
+		begin_reactor
+			0.0
+			0.0
+			0.0
+			0.004
+			begin_nuclei
+				4 8
+				2 4
+			end_nuclei
+		end_reactor
+		begin_target
+			50.0
+			begin_elements
+				6 1
+				5 9
+			end_elements
+		end_target
+	end_reactorchain
+	begin_reactorchain
+		begin_reactor
+			16.645
+			0.015
+			24.0
+			0.001
+			begin_nuclei
+				5 10
+				2 3
+				2 4
+			end_nuclei
+		end_reactor
+		begin_reactor
+			0.0
+			0.0
+			0.0
+			0.004
+			begin_nuclei
+				5 9
+				2 4
+			end_nuclei
+		end_reactor
+		begin_reactor
+			0.0
+			0.0
+			0.0
+			0.004
+			begin_nuclei
+				3 5
+				1 1
+			end_nuclei
+		end_reactor
+		begin_target
+			50.0
+			begin_elements
+				6 1
+				5 9
+			end_elements
+		end_target
+	end_reactorchain
+	begin_reactorchain
+		begin_reactor
+			22.0
+			1.0
+			24.0
+			0.001
+			begin_nuclei
+				5 10
+				2 3
+				1 1
+			end_nuclei
+		end_reactor
+		begin_reactor
+			0.0
+			0.0
+			0.0
+			0.004
+			begin_nuclei
+				6 12
+				2 4
+			end_nuclei
+		end_reactor
+		begin_reactor
+			0.0
+			0.0
+			0.0
+			0.004
+			begin_nuclei
+				4 8
+				2 4
+			end_nuclei
+		end_reactor
+		begin_target
+			50.0
+			begin_elements
+				6 1
+				5 9
+			end_elements
+		end_target
+	end_reactorchain
+	begin_detectorarray
+		focalplane 15.0 8.9215
+		sabre
+	end_detectorarray
+end_simulator
