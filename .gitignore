@@ -1,6 +1,6 @@
 #ignored directories
-./bin
-./objs
+bin/
+objs/
 
 #ignored files
 *.sublime-workspace
