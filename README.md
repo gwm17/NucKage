@@ -14,8 +14,10 @@ Simply clone the repository using `git clone https://github.com/gwm17/NucKage.gi
 - `premake5 gmake2`
 - `make -j 4`
 
+NucKage comes with a UI to generate configuration files, called Roles. The RoleGUI is written in python and uses Qt5 with the qtpy front-end wrapper. To use the RoleGUI one must have installed the qtpy library as well as one of the supported QT5 libraries (pyqt5 or PySide2). To launch the RoleGUI simply run `./bin/RoleGUI` from the top level directory of the repository.
+
 ## Usage
-NucKage expects to be run from the top level directory of the repository as `./bin/NucKage <config>`. Currently NucKage accepts a single argument as the configuration file to be used. Configurations are currently written by hand, however a UI is planned to be developed to generate config files. In the future NucKage will also allow for an argument specifying the number of threads to allocate to the thread pool. NucKage saves a set of histograms and graphs to a ROOT outputfile specified in the configuration file.
+NucKage expects to be run from the top level directory of the repository as `./bin/NucKage <config>`. Currently NucKage accepts a single argument as the configuration (role) file to be used. Configurations are in plain-text, so with an example one would be able to write a role from scratch, however the RoleGUI is provided to make generating roles more straightforward as well as provide some simple checks to make sure a role will actually be valid for NucKage. In the future NucKage will also allow for an argument specifying the number of threads to allocate to the thread pool. NucKage saves a set of histograms and graphs to a ROOT outputfile specified in the configuration file.
 
 ## Principles
 
@@ -34,6 +36,9 @@ Energy loss is calculated for two kinds of particles: projectiles and ejectiles.
 In general, nuclear physics experiments do not actually run a single reaction. A beam-like projectile is impinged upon a target and many possible reactions can take place. In order to properly understand the kinematics and detector performance, one would like to be able to run a simulation of all possible channels that are open in a uniform simulation environment. However, simulating so many reactions can be quite time consuming when running them one at a time (especially when striving to achieve an appropriate level of statistics).
 
 In an effort to leverage modern hardware, NucKage utilizes a thread pool to run multiple simulations at the same time. In general, optimal performance will occur when there is a thread for every reaction, with gains as large as a factor of 2 in overal runtime; even in a worst case scenario (several reaction chains with many reactions using a single worker thread) performance gains are non-neglible as NucKage still utilizes the main thread to handle plotting of results while the worker thread runs the actual simulation. For insights on how the thread pool is implemented, see src/ThreadPool.h.
+
+### Adding new detector geometries
+In principle, any type of detector geometry can be programed into NucKage by following the examples given of the SPS aperature and the SABRE array. The difficulty arises in that currently each detector is distinct and needs to be added to the detector array independently. Additionally, the RoleGUI and configuration files are not terribly easy to modify.
 
 ## Notes
 NucKage is still under rapid development and will continue to be so until further notice.
