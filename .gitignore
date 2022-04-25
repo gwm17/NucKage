@@ -1,9 +1,11 @@
 #ignored directories
-bin/
 objs/
+roles/src/__pycache__/
 
 #ignored files
+bin/NucKage
 *.sublime-workspace
 *.sublime-project
 Makefile
 *.make
+*.role
