@@ -171,6 +171,7 @@ namespace NucKage {
 		std::string graph_name;
 		for(auto& result : data.products)
 		{
+
 			graph_name = "Chain_"+std::to_string(data.chainID)+"_Rxn_"+result.reactorName+"_Nuc_"+result.target.symbol+"_KEvTheta;#theta_{Lab}(deg);KE (MeV)";
 			MyFillGraph(graph_name, result.target.pvector.Theta()*s_rad2deg, result.target.pvector.E()-result.target.pvector.M(), 2);
 			graph_name = "Chain_"+std::to_string(data.chainID)+"_Rxn_"+result.reactorName+"_Nuc_"+result.target.symbol+"_KEvPhi;#phi_{Lab}(deg);KE (MeV)";
@@ -179,6 +180,7 @@ namespace NucKage {
 			h1pars.binsX = 300, h1pars.minX = 0.0, h1pars.maxX = 30.0;
 			MyFill1D(h1pars, result.target.pvector.M()-result.target.mass);
 
+			
 			graph_name = "Chain_"+std::to_string(data.chainID)+"_Rxn_"+result.reactorName+"_Nuc_"+result.ejectile.symbol+"_KEvTheta;#theta_{Lab}(deg);KE (MeV)";
 			MyFillGraph(graph_name, result.ejectile.pvector.Theta()*s_rad2deg, result.ejectile.pvector.E()-result.ejectile.pvector.M(), 4);
 			graph_name = "Chain_"+std::to_string(data.chainID)+"_Rxn_"+result.reactorName+"_Nuc_"+result.ejectile.symbol+"_KEvPhi;#phi_{Lab}(deg);KE (MeV)";

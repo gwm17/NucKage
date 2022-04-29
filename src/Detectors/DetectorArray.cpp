@@ -35,25 +35,25 @@ namespace NucKage {
 
 		//Last reaction in the chain look at both residual and ejectile
 
-		Nucleus& particle = data.products[data.products.size()-1].ejectile;
-		m_focalPlane.CheckNucleus(particle);
-		if(!particle.detected)
+		Nucleus& eject = data.products[data.products.size()-1].ejectile;
+		m_focalPlane.CheckNucleus(eject);
+		if(!eject.detected)
 		{
 			for(auto& sabdet : m_sabre)
 			{
-				sabdet.CheckNucleus(particle);
-				if(particle.detected)
+				sabdet.CheckNucleus(eject);
+				if(eject.detected)
 					break;
 			}
 		}
-		particle = data.products[data.products.size()-1].residual;
-		m_focalPlane.CheckNucleus(particle);
-		if(!particle.detected)
+		Nucleus& resid = data.products[data.products.size()-1].residual;
+		m_focalPlane.CheckNucleus(resid);
+		if(!resid.detected)
 		{
 			for(auto& sabdet : m_sabre)
 			{
-				sabdet.CheckNucleus(particle);
-				if(particle.detected)
+				sabdet.CheckNucleus(resid);
+				if(resid.detected)
 					break;
 			}
 		}

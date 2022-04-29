@@ -166,6 +166,7 @@ namespace NucKage {
 	
 		m_reactants[2].pvector = m_reactants[0].pvector - m_reactants[1].pvector;
 
+		
 		if(m_target) //ejectile energy loss
 		{
 			double ejectKE = m_reactants[1].pvector.E() - m_reactants[1].pvector.M();
@@ -175,7 +176,7 @@ namespace NucKage {
 			if(ejectTheta < M_PI/2.0) //forwards through target (other fraction)
 				percent_depth = 1.0 - percent_depth;
 			ejectKE -= m_target->GetEnergyLossFractionalDepth(m_reactants[1].Z, m_reactants[1].A, ejectKE, ejectTheta, params.targetFraction);
-			double ejectP = std::sqrt(ejectKE*(ejectKE + 2.0*m_reactants[2].pvector.M()));
+			double ejectP = std::sqrt(ejectKE*(ejectKE + 2.0*m_reactants[1].pvector.M()));
 			double ejectE = ejectKE + m_reactants[1].pvector.M();
 			m_reactants[1].pvector.SetPxPyPzE(ejectP*std::sin(ejectTheta)*std::cos(ejectPhi),
 											  ejectP*std::sin(ejectTheta)*std::sin(ejectPhi),
